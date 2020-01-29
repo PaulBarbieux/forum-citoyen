@@ -1,0 +1,7 @@
+﻿Forum : <I class="fa fa-comments" aria-hidden="true"></I>
+Idée : <I class="fa fa-lightbulb-o" aria-hidden="true"></I>
+Projet : <I class="fa fa-pencil-square-o" aria-hidden="true"></I>
+Adhérents : <I class="fa fa-users" aria-hidden="true"></I>
+Vote : <SPAN class="glyphicon glyphicon-thumbs-up"></SPAN>
+Commentaire : <I class="fa fa-comments" aria-hidden="true"></I>
+Nouvelle : <SPAN class="glyphicon glyphicon-bullhorn"></SPAN>

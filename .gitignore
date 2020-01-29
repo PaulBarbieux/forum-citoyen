@@ -1,0 +1,7 @@
+/_medias/*
+!/_medias/index.php
+/_presse/*
+!/_presse/index.php
+/forums/*
+!/forums/index.php
+*.mno

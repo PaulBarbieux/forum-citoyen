@@ -1,0 +1,472 @@
+/*
+	Couleurs logo
+	Bleu foncé : #11698C
+	Bleu pétant : #009FE3
+	Vert-jaune : #DEDC00
+*/
+
+/*
+	Fonts
+*/
+@import 'https://fonts.googleapis.com/css?family=Cuprum:400,400i,700,700i';
+
+/*
+	Body
+*/
+BODY {
+	padding-top: 50px;
+	margin-bottom:40px;
+}
+BODY.admin {
+	padding-top: 70px;
+}
+P {
+	text-align:justify;
+}
+/*
+	Barre de navigation
+*/
+.navbar-default {
+	font-family: 'Cuprum', sans-serif;
+	text-transform:uppercase;
+	background-color: #FFF;
+	border-color: #FFF;
+	-webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+	-moz-box-shadow:    0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+	box-shadow:         0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+}
+.navbar-default .navbar-nav > .active > A, 
+.navbar-default .navbar-nav > .active > A:hover, 
+.navbar-default .navbar-nav > .active > A:focus {
+	color: #FFFFFF;
+	background-color: #156789;
+}
+.navbar-default .navbar-nav A.btn-primary {
+	color:#FFF;
+	border-style:none;
+}
+@media (min-width: 768px) and (max-width: 991px) {
+	.connect-nav .connect-label {
+		display:none;
+	}
+	.nav > li > a {
+		padding-left: 7px;
+		padding-right: 7px;
+	}
+}
+@media (max-width: 768px) {
+	.navbar-default .navbar-collapse, 
+	.navbar-default .navbar-form {
+		margin-top:35px;
+	}
+}
+/*
+	Onglets
+*/
+.nav-tabs {
+	font-family: 'Cuprum', sans-serif;
+	text-transform:uppercase;
+	margin-bottom:20px;
+}
+/*
+	Panneau
+*/
+.panel {
+	-webkit-box-shadow: 0px 2px 11px 0px rgba(0, 0, 0, 0.12);
+	-moz-box-shadow:    0px 2px 11px 0px rgba(0, 0, 0, 0.12);
+	box-shadow:         0px 2px 11px 0px rgba(0, 0, 0, 0.12);
+	border-style:none;
+}
+.panel-default .panel-heading {
+	background-color:#BBB;
+	color:#FFF;
+}
+.panel H1,
+.panel H2,
+.panel H3,
+.panel H4 {
+	margin:0;
+}
+.panel-body {
+}
+.panel-illu {
+	width:100%;
+	height:200px;
+	background-size: cover;
+	-webkit-background-size: cover;
+	margin-bottom:10px;
+}
+.panel-news {
+}
+.panel-news .panel-heading {
+	background-color:#DDD;
+	color:#333;
+}
+.panel-news .panel-body,
+.panel-forum .panel-body,
+.panel-projet .panel-body {
+	padding:0;
+}
+.panel-forum .panel-heading {
+	background-color:#11698C;
+	color:#FFF;
+}
+.panel-forum .panel-body P {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+.panel-projet .panel-body P {
+	padding: 10px;
+}
+.news-excerpt {
+	padding:10px;
+	background-color:#FFFFFF;
+	zoom: 1;
+	filter: alpha(opacity=70);
+	opacity: 0.7;
+	color:#000000;
+	text-align:justify;
+}
+.news-more {
+	text-align:right;
+}
+.news-more A {
+	background-color:#009FE3;
+	color:#FFFFFF;
+	padding:1px 5px;
+	border:none;
+}
+.panel-projet .panel-heading {
+	background-color:#DEDC00;
+}
+/*
+	Panneau d'avertissement cookie
+*/
+#PanelWarningCookie {
+	width:300px;
+	position: fixed;
+	right:0;
+	bottom:0;
+	background-color:#F5EAA7;
+}
+/*
+	Inputs
+*/
+.btn.disabled, .btn[disabled], fieldset[disabled] .btn {
+	opacity: .40;
+}
+/*
+	Bande se séparation sur 100% largeur
+*/
+.strip {
+	background-color:#FFF;
+	background-position:center center;
+	padding-top:30px;
+	padding-bottom:30px;
+}
+.strip-banner {
+	background-image:url(/img/bg/triangular.png);
+	background-size: auto;
+	background-repeat: repeat;
+	padding: 0;
+}
+.strip-banner .row {
+	position:relative;
+}
+.strip-banner H1,
+.strip-image H1 {
+	font-size:46px;
+	font-style: italic;
+	color:#FFF;
+	font-weight: normal;
+	text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.62);
+	text-align:center;
+}
+.strip-brand {
+	position:absolute;
+	bottom:0;
+}
+.strip-title {
+	position: relative;
+	min-height:100px;
+	overflow:hidden;
+	margin-left:150px;
+}
+.strip-title H1 {
+	position:absolute;
+	letter-spacing:-2px;
+	right:20px;
+	text-transform:uppercase;
+	font-weight:400;
+	line-height:0.7;
+	bottom: -1px;
+	margin-bottom:0;
+	text-align:left;
+	text-shadow: 0px 0px 10px rgba(128, 191, 191, 1);
+}
+.strip-title H1 I {
+	_display:block;
+	position:absolute;
+	top:-4px;
+	left:0;
+	font-size: 40px;
+	display:none; /* Caché car quelques soucis de design */
+}
+@media (max-width: 768px) {
+	.strip-title H1 {
+		font-size:35px;
+		bottom:-1px;
+	}
+}
+@media (max-width: 360px) {
+	.strip-title H1 {
+		font-size:25px;
+	}
+}
+/*
+	Identité page d'accueil
+*/
+.strip-identite .strip-title {
+	height:190px;
+	margin-left:0;
+}
+.strip-identite .strip-title H1 {
+	font-size: 70px;
+	font-weight: 700;
+	line-height: 0.68;
+	bottom: -2px;
+	text-align: right;
+	padding-left: 0;
+	letter-spacing: -3px;
+	padding-left: 200px;
+}
+@media (max-width: 991px) {
+	.strip-identite .strip-title H1 {
+		font-size:60px;
+	}
+}
+@media (max-width: 600px) {
+	.strip-identite .strip-title H1 {
+		font-size: 35px;
+		padding-left:0;
+		bottom: -1px;
+		letter-spacing: -2px;
+	}
+}
+/*
+	Pieds de page fixe (sticky footer)
+*/
+HTML {
+  position: relative;
+  min-height: 100%;
+}
+BODY {
+	margin-bottom: 60px;
+}
+FOOTER {
+	position:absolute;
+	bottom:0;
+	margin-top:40px;
+	width:100%;
+	background-color:#DDD;
+	-webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+	-moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+	box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.2);
+}
+.footer-liens-divers {
+	background-color:#11698C;
+	padding:0;
+	margin:0;
+}
+.footer-liens-divers P,
+.footer-liens-divers A {
+	color:#FFF;
+}
+.footer-liens-divers .nav A {
+	line-height:20px;
+}
+.footer-liens-divers .nav I {
+	font-size:20px;
+}
+.footer-liens-divers .nav A:hover,
+.footer-liens-divers .nav A:focus {
+	color: #11698C;
+}
+.footer-supports {
+	margin: 20px 0;
+}
+.footer-supports A {
+	padding: 0;
+	display:inline-block;
+	width:150px;
+}
+@media (max-width: 1200px) {
+	.footer-supports A {
+		width:75px;
+	}
+}
+@media (max-width: 700px) {
+	.footer-supports A {
+		width:50px;
+	}
+}
+/*
+	Colonnes page d'accueil
+*/
+.col-actualites > H1,
+.col-actualites > P {
+	color:#BBB;
+	text-transform:uppercase;
+	font-weight:bold;
+}
+.col-forums > H1,
+.col-forums > P {
+	color:#11698C;
+	text-transform:uppercase;
+	font-weight:bold;
+}
+.col-projets > H1,
+.col-projets > P {
+	color:#DEDC00;
+	text-transform:uppercase;
+	font-weight:bold;
+}
+/*
+	Liens
+*/
+P A {
+	border-bottom: dotted 1px #337ab7;
+}
+/*
+	List group
+*/
+A.list-group-item {
+	color:#009FE3;
+}
+.list-group-item.active, 
+.list-group-item.active:hover, 
+.list-group-item.active:focus {
+	background-color: #EEE;
+	color:#333;
+	border-color:#EEE;
+}
+.panel-body .list-group-item {
+	padding: 10px 5px;
+	border-style: solid none;
+}
+/*
+	List bordered
+*/
+UL.list-bordered {
+	padding:5px;
+}
+UL.list-bordered LI {
+	list-style-type:none;
+	padding:5px;
+	margin:0;
+	border-bottom:solid 1px #CCC;
+}
+/*
+	Masonry
+*/
+.grid-item {
+	width:360px;
+}
+/*
+	Commentaires dans les idées
+*/
+.idee-discussion {
+	margin-top: 10px;
+	border: solid 1px #92C6DA;
+}
+.discussion-titre {
+	background-color:#AAA;
+	padding: 10px;
+	font-weight:bold;
+	text-align:center;
+	color:#FFFFFF;
+}
+.idee-commentaire {
+	margin: 10px;
+	-webkit-box-shadow: 0px 4px 6px 2px rgba(0, 0, 0, 0.05);
+	-moz-box-shadow:    0px 4px 6px 2px rgba(0, 0, 0, 0.05);
+	box-shadow:         0px 4px 6px 2px rgba(0, 0, 0, 0.05);
+}
+.idee-commentaire .media-body,
+.idee-commentaire .body {
+	font-size:11px;
+	padding:5px;
+}
+.idee-discussion .panel-forum .idee-commentaire {
+	margin:10px;
+}
+.idee-discussion.panel-group .panel-heading,
+.idee-discussion.panel-group .panel-body {
+	padding: 0;
+}
+.idee-discussion .collapse-link {
+	background-image:url(/img/collapse-icons.png);
+	background-repeat:no-repeat;
+	background-position:right -40px;
+	border-style:none;
+	color:#FFFFFF;
+}
+.idee-discussion .collapse-link,
+.idee-discussion .collapse-link:focus {
+	background-color:#92C6DA;
+}
+.idee-discussion .collapse-link.collapsed {
+	background-position:right 10px;
+	background-color:#0088c2;
+}
+.idee-discussion .collapse.in.active {
+	background-color:#F0F7F9;
+}
+/*
+	Images
+*/
+.img-responsive.img-illustration {
+	-webkit-box-shadow: 0px 2px 11px 0px rgba(0, 0, 0, 0.20);
+	-moz-box-shadow:    0px 2px 11px 0px rgba(0, 0, 0, 0.20);
+	box-shadow:         0px 2px 11px 0px rgba(0, 0, 0, 0.20);
+}
+/*
+	Gravatar : afficher une lettre quand il n'y a pas d'image (Gravatar renvoie une image transparente)
+*/
+.gravatar {
+	background-repeat:no-repeat;
+	background-size: cover;	
+}
+
+/*
+	Un peu de tout
+*/
+.meta {
+	font-size:12px;
+	color:#666666;
+	margin:0;
+	padding-top:3px;
+	padding-bottom:3px;
+}
+.compteur {
+	display:inline-block;
+	margin-left:10px;
+	margin-right: 10px;
+	padding:2px 5px;
+	border-radius: 8px;
+	background-color:#EEE;
+}
+/* En test les messages ne sont pas envoyés, mais affichés dans la page */
+.mail-body-test {
+	background-color:#FFFFCC;
+	border: solid 1px #DDD;
+	padding:10px;
+	margin:10px;
+	width:500px;
+}
+/*
+	Admin
+*/
+.admin .form-info {
+	display:none;
+}
