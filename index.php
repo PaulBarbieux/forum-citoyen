@@ -12,13 +12,12 @@ while ($row = $rows->fetch()) {
 	$idNouvelles[]= $row['id'];
 }
 $rows->closeCursor();
-$rows = sqlExecute("SELECT * FROM medias WHERE role='illustration' AND proprietaire IN (".implode(",",$idNouvelles).")");
-while ($row = $rows->fetch()) {
-	$nouvelles[$row['proprietaire']]['illustration'] = $row['fichier'];
+if (count($idNouvelles) > 0) {
+	$rows = sqlExecute("SELECT * FROM medias WHERE role='illustration' AND proprietaire IN (".implode(",",$idNouvelles).")");
+	while ($row = $rows->fetch()) {
+		$nouvelles[$row['proprietaire']]['illustration'] = $row['fichier'];
+	}
 }
-
-
-
 ?>
 <!DOCTYPE html>
 <html>
