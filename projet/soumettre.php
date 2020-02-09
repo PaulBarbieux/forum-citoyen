@@ -5,8 +5,7 @@ $error = false;
 $messageWarning = "";
 $fichiersCharges = array();
 
-if ($action == "nouveauProjet") {
-	// Traiter les autres données (y compris les données personnelles déjà été traitées plus haut : pas grave !)
+if ($CONNECTED and $action == "nouveauProjet") {
 	foreach ($_POST as $input=>$value) {
 		switch ($input) {
 			case "last_name" :
@@ -32,19 +31,13 @@ if ($action == "nouveauProjet") {
 		header("Location: soumettre.php");
 		exit;
 	}
+	if (!$error and !isset($_POST['rights'])) {
+		$error = true;
+		$message = "Veuillez cocher votre acceptation des droits sur le contenu.";
+	}
 	if (!$error) {
 		// Données personnelles
-		if ($CONNECTED) {
-			$values['email'] = $_SESSION['mon_profil']['email'];
-		} else {
-			// Non connecté : traiter les données personnelles
-			require $_SERVER['DOCUMENT_ROOT']."/includes/personneValidation.php";
-			if (!$error) {
-				// Créer la personne
-				$urlRetourApresConnexion = "/projet/soumettre.php";
-				require $_SERVER['DOCUMENT_ROOT']."/includes/personneCreation.php";
-			}
-		}
+		$values['email'] = $_SESSION['mon_profil']['email'];
 	}
 	if (!$error) {
 		// Traiter les fichiers
@@ -169,49 +162,11 @@ if ($action == "nouveauProjet") {
 				<P>Il appartiendra donc à chaque initiateur de projet de s'entourer de personnes motivées pour porter celui-ci.</P>
 				<P>Les projets feront l'objet d'une attention de la part du Forum Citoyen  et seront soutenus en fonction de leur importance, du nombre de personnes impactées, des capacités d'influer sur la prise de décision, de l'intérêt général, du nombre de personnes motivées à le porter.</P>
 				<?php if (!$CONNECTED) { ?>
-				<P class="alert alert-warning">Si vous êtes déjà enregistré sur notre site, <A href='/connexion/?back=/projet/soumettre.php'>veuillez vous connecter</A> avant de nous soumettre un projet.</P>
+				<P class="alert alert-warning"><A href='/connexion/?back=/projet/soumettre.php'>Veuillez vous connecter ou vous inscrire</A> avant de nous soumettre un projet.</P>
 				<?php } ?>
 			</DIV>
 	<?php if ($action != "completed") { ?>
 			<form method="post" enctype="multipart/form-data">
-				<DIV class="col-md-6 col-sm-12">
-					<DIV class="panel panel-default">
-						<DIV class="panel-heading">
-							<H2 class="panel-title">À propos de vous</H2>
-						</DIV>
-						<DIV class="panel-body">
-							<?php if ($CONNECTED) { ?>
-							<?php echo $_SESSION['mon_profil']['prenom'] ?>, vous êtes déjà connu(e) dans notre système.
-							<?php } else { ?>
-							<?php include $_SERVER['DOCUMENT_ROOT']."/includes/formPersonne.php" ?>
-							<?php } ?>
-						</DIV>
-					</DIV>
-					<DIV class="panel panel-default">
-						<DIV class="panel-heading">
-							<H2 class="panel-title">Médias</H2>
-						</DIV>
-						<DIV class="panel-body">
-							<div class="form-group">
-								<label for="image">Image d'illustration</label>
-								<P>Votre projet sera plus visible avec une image.</P>
-								<INPUT name="image" type="file" class="form-control">
-							</div>
-							<div class="form-group">
-								<label for="media">Documents</label>
-								<P>Vous pouvez joindre des documents (PDF) ou des images.</P>
-								<INPUT name="media[]" type="file" class="form-control">
-								<INPUT name="media[]" type="file" class="form-control">
-								<INPUT name="media[]" type="file" class="form-control">
-							</div>
-							<P class="alert alert-warning">Les documents seront montrés avec leur nom de fichier : essayez d'avoir des noms explicites.</P>
-						</DIV>
-					</DIV>
-					<INPUT type="hidden" name="action" value="nouveauProjet">
-					<INPUT type="hidden" name="start" value="<?php echo time() ?>">
-					<INPUT type="hidden" name="last_name">
-					<BUTTON type="submit" class="btn btn-success btn-lg btn-block"><SPAN class="glyphicon glyphicon-send"></SPAN>&nbsp;&nbsp;&nbsp;Envoyez-nous votre projet</BUTTON>
-				</DIV>
 				<DIV class="col-md-6 col-sm-12">
 					<DIV class="panel panel-default">
 						<DIV class="panel-heading">
@@ -221,6 +176,40 @@ if ($action == "nouveauProjet") {
 							<?php include $_SERVER['DOCUMENT_ROOT']."/includes/formProjet.php" ?>
 						</DIV>
 					</DIV>
+				</DIV>
+				<DIV class="col-md-6 col-sm-12">
+					<DIV class="panel panel-default">
+						<DIV class="panel-heading">
+							<H2 class="panel-title">Médias</H2>
+						</DIV>
+						<DIV class="panel-body">
+							<div class="form-group">
+								<label for="image">Image d'illustration</label>
+								<P>Votre projet sera plus visible avec une image.</P>
+								<INPUT name="image" type="file" class="form-control" <?php if (!$CONNECTED) echo 'disabled' ?>>
+							</div>
+							<div class="form-group">
+								<label for="media">Documents</label>
+								<P>Vous pouvez joindre des documents (PDF) ou des images.</P>
+								<INPUT name="media[]" type="file" class="form-control" <?php if (!$CONNECTED) echo 'disabled' ?>>
+								<INPUT name="media[]" type="file" class="form-control" <?php if (!$CONNECTED) echo 'disabled' ?>>
+								<INPUT name="media[]" type="file" class="form-control" <?php if (!$CONNECTED) echo 'disabled' ?>>
+							</div>
+							<P class="alert alert-warning">Les documents seront montrés avec leur nom de fichier : essayez d'avoir des noms explicites.</P>
+						</DIV>
+					</DIV>
+					<INPUT type="hidden" name="action" value="nouveauProjet">
+					<INPUT type="hidden" name="start" value="<?php echo time() ?>">
+					<INPUT type="hidden" name="last_name">
+					<?php if ($CONNECTED) { ?>
+					<label>
+					  <input type="checkbox" id="rights" name="rights" value="1" required >
+					  En publiant le contenu sous les rubriques "Le projet" et "Médias" sur le site <?= $_SERVER['SERVER_NAME'] ?> j’en cède tous les droits de propriété à l'<?= ASBL ?>.
+					</label>
+					<BUTTON type="submit" class="btn btn-success btn-lg btn-block"><SPAN class="glyphicon glyphicon-send"></SPAN>&nbsp;&nbsp;&nbsp;Envoyez-nous votre projet</BUTTON>
+					<?php } else { ?>
+					<BUTTON class="btn btn-success btn-lg btn-block" disabled><SPAN class="glyphicon glyphicon-send"></SPAN>&nbsp;&nbsp;&nbsp;Vous devez être connecté pour soumettre un projet</BUTTON>
+					<?php } ?>
 				</DIV>
 			</form>
 	<?php } ?>

@@ -45,6 +45,7 @@
                     <li <?php if ($THIS_PAGE['path'] == "/rejoindre.php") echo "class='active'" ?>><a href="/rejoindre.php">Rejoignez-nous</a></li>
                     <li <?php if ($THIS_PAGE['path'] == "/contact.php") echo "class='active'" ?>><a href="/contact.php">Contactez-nous</a></li>
                     <li <?php if ($THIS_PAGE['path'] == "/soutiens.php") echo "class='active'" ?>><a href="/soutiens.php">Ils nous soutiennent</a></li>
+					<li <?php if ($THIS_PAGE['path'] == "/privacy.php") echo "class='active'" ?>><a href="/privacy.php">Politique de protection des données</a></li>
                 </ul>
             </li>
 			<li>

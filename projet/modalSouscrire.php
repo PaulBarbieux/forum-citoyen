@@ -27,11 +27,6 @@ if  (!isset($values['profil'])) {
 					<P class="alert alert-danger"><?php echo $message ?></P>
 					<?php } ?>
 					<P>En adh&eacute;rant &agrave; ce projet, vous ajouter du poids &agrave; sa candidature pour devenir un forum.</P>
-					<?php if (!$CONNECTED) { ?>
-					<P class="alert alert-warning">Si vous &ecirc;tes d&eacute;j&agrave; enregistr&eacute; sur notre site, <A href='/connexion/?back=/projet/?id=<?php echo $id ?>'>veuillez vous connecter</A> avant d'adh&eacute;rer au projet.</P>
-					<P>Les informations que vous encodez ici resteront confidentiels mais seront partag&eacute;es avec les autres adh&eacute;rents &agrave; ce projet au cas o&ugrave; il aboutit &agrave; un forum.</P>
-					<?php include $_SERVER['DOCUMENT_ROOT']."/includes/formPersonne.php" ?>
-					<?php } ?>
 					<div class="form-group">
 						<label for="profil">Votre profil</label>
 						<textarea name="profil" class="form-control" required placeholder="Comment vous profilez-vous par rapport &agrave; ce projet, quelles sont les comp&eacute;tences que vous pourriez y apporter ?" rows="3"><?php echo $values['profil'] ?></textarea>

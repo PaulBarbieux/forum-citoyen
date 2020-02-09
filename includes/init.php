@@ -22,6 +22,11 @@ $THIS_PAGE['path'] = $_SERVER['PHP_SELF'];
 $domain = explode(".",$_SERVER['SERVER_NAME']);
 
 /*
+	Constantes liées au site
+*/
+require_once "config.php";
+
+/*
 	Connecté ?
 */
 if (isset($_SESSION['mon_profil'])) {
@@ -30,23 +35,6 @@ if (isset($_SESSION['mon_profil'])) {
 	$CONNECTED = false;
 }
 
-/*
-	Constantes
-*/
-define("SITE_TITLE","Recit"); // Nom du site
-define("SITE_SLOGAN","Slogan du site"); // Slogan en page d'accueil
-define("ADMIN_EMAIL","paul.barbieux@gmail.com"); // email d'administration
-define("WEBMASTER_EMAIL","paul.barbieux@gmail.com"); // email webmaster
-define("SEND_EMAIL","noreply@recit.be"); // email d'envoi par le site
-define("ADMIN_FOLDER","/_admin/"); // Dossier d'administration
-define("MEDIAS_FOLDER","/_medias/"); // Dossier des médias uploader par les citoyens
-if ($domain[0] == "local") {
-	define("TESTING",true); // Si en local : test
-	define("ROOT",$_SERVER['DOCUMENT_ROOT']);
-} else {
-	define("TESTING",false);
-	define("ROOT","########");
-}
 if (strpos($THIS_PAGE['path'],ADMIN_FOLDER) !== false) {
 	if ($CONNECTED and $_SESSION['mon_profil']['role'] == "admin") {
 		define("ADMIN",true);
@@ -83,9 +71,9 @@ if (TESTING) {
 	$dbUser = "root";
 	$dbPsw = "";
 } else {
-	$dbHost = "#######";
-	$dbUser = "#######";
-	$dbPsw = "#######";
+	$dbHost = DB_HOST;
+	$dbUser = DB_USER;
+	$dbPsw = DB_PSW;
 }
 try {
 	$db = new PDO($dbHost,$dbUser,$dbPsw);

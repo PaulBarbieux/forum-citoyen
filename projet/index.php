@@ -225,10 +225,14 @@ jQuery(document).ready(function(){
 							</div>
 						</FORM>
 						<?php if ($_SESSION['ce_projet']['adhesionOuverte']) { ?>
-						<P>Adhérez au projet en vous inscrivant. Vous serez tenu informé de son évolution, tout comme vous deviendrez membre de l'équipe quand son forum sera lancé.</P>
-						<A href="#" class="btn btn-block btn-primary" data-toggle="modal" data-target="#ModalSouscrire" data-projet="<?php echo $_SESSION['ce_projet']['titre'] ?>"><SPAN class="glyphicon glyphicon-ok"></SPAN> Adhérez</A>
+							<P>Adhérez au projet en vous inscrivant. Vous serez tenu informé de son évolution, tout comme vous deviendrez membre de l'équipe quand son forum sera lancé.</P>
+							<?php if ($CONNECTED) { ?>
+							<A href="#" class="btn btn-block btn-primary" data-toggle="modal" data-target="#ModalSouscrire" data-projet="<?php echo $_SESSION['ce_projet']['titre'] ?>"><SPAN class="glyphicon glyphicon-ok"></SPAN> Adhérez</A>
+							<?php } else { ?>
+							<P class="alert alert-warning">Veuillez <A href="/connexion/?back=<?= $_SERVER['REQUEST_URI'] ?>">vous connecter ou vous inscrire</A> pour pouvoir adhérer à ce projet.</P>
+							<?php } ?>
 						<?php } else { ?>
-						<P><SPAN class="glyphicon glyphicon-ok"></SPAN> Vous adhérez à ce projet.</P>
+							<P><SPAN class="glyphicon glyphicon-ok"></SPAN> Vous adhérez à ce projet.</P>
 						<?php } ?>
 					</DIV>
 				</DIV>

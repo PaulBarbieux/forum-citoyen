@@ -27,11 +27,6 @@ if  (!isset($values['profil'])) {
 					<P class="alert alert-danger"><?php echo $message ?></P>
 					<?php } ?>
 					<P>En rejoignant ce forum, vous pourrez exposer vos id&eacute;es.</P>
-					<?php if (!$CONNECTED) { ?>
-					<P class="alert alert-warning">Si vous &ecirc;tes d&eacute;j&agrave; enregistr&eacute; sur notre site, <A href='/connexion/?back=/forum/index.php?tab=equipe'>veuillez vous connecter</A> avant d'adh&eacute;rer au forum.</P>
-					<P>Les informations que vous encodez ici resteront confidentiels mais seront en partie partag&eacute;es avec les autres adh&eacute;rents &agrave; ce forum.</P>
-					<?php include $_SERVER['DOCUMENT_ROOT']."/includes/formPersonne.php" ?>
-					<?php } ?>
 					<div class="form-group">
 						<label for="profil">Votre motivation par rapport à ce forum</label>
 						<textarea name="profil" class="form-control" required placeholder="Comment vous profilez-vous par rapport &agrave; ce forum, quelles sont les comp&eacute;tences que vous pourriez y apporter, en quoi ce forum vous int&eacute;resse, quel est votre motivation ?" rows="3"><?php echo $values['profil'] ?></textarea>

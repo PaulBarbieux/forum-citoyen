@@ -113,7 +113,7 @@ setTimeout(function(){
 			$mail->isHTML(true);
 			$mail->Body = $body;
 			$mail->addAddress(ADMIN_EMAIL,SITE_TITLE);
-			$mail->Subject = SITE_TITLE." : nouvelle idée ".$values['titre'];
+			$mail->Subject = utf8_decode(SITE_TITLE." : nouvelle idée ".$values['titre']);
 			if (TESTING) {
 				print "<DIV class='mail-body-test'>".$body."</DIV>";
 			} else {

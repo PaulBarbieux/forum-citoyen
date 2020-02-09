@@ -32,7 +32,7 @@ foreach ($values as $input=>$value) {
 			}
 			break;
 		case "telephone" :
-			if (!$error and !isItPhone($value)) {
+			if (!$error and $value != "" and !isItPhone($value)) {
 				$error = true;
 				$message = "Votre téléphone n'est pas valide";
 			}
@@ -45,9 +45,7 @@ foreach ($values as $input=>$value) {
 			break;
 		case "nom" :
 		case "prenom" :
-		case "rue" :
 		case "commune" :
-		case "description" :
 			if ($value == "") {
 				$error = true;
 				$message = "Veuillez remplir toutes les zones s.v.p. <!-- ".$input." -->";

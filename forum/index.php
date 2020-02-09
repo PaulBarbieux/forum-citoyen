@@ -64,7 +64,7 @@ if ($aucunForum) {
 
 <?php
 // Souscrire à ce forum
-if (isset($_POST['souscrire'])) {
+if (isset($_POST['souscrire']) and CONNECTED) {
 	if (isItHuman() === false) {
 		// Formulaire rempli par un robot !
 		header("Location: index.php?tab=equipe");
@@ -77,19 +77,7 @@ if (isset($_POST['souscrire'])) {
 		$error = true;
 		$message = "Pourriez-vous écrire quelques mots dans le profil s.v.p. ?";
 	}
-	if ($CONNECTED) {
-		// Connecté : chercher l'email dans la session
-		$values['email'] = $_SESSION['mon_profil']['email'];
-	} else {
-		// Non connecté : réception des données de profil
-		$values = $_POST;
-		require $_SERVER['DOCUMENT_ROOT']."/includes/personneValidation.php";
-		if (!$error) {
-			// Créer la personne
-			$urlRetourApresConnexion = "/forum/index.php?tab=equipe";
-			require $_SERVER['DOCUMENT_ROOT']."/includes/personneCreation.php";
-		}
-	}
+	$values['email'] = $_SESSION['mon_profil']['email'];
 	if ($error) {
 		// Afficher le popup avec l'erreur
 ?>
@@ -433,8 +421,16 @@ while ($row = $rows->fetch()) {
 		<!-------------------------------------------------- EQUIPE ----------------------------------------->
 		<DIV class="row">
 			<DIV class="col-md-12">
-				<P>Voici les personnes qui ont adhéré à ce forum.
-				<?php if (!$jeSuisAdherent) { ?>Voulez-vous en faire partie ? <A href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#ModalSouscrire" data-forum="<?php echo $_SESSION['ce_forum']['titre'] ?>"><SPAN class="glyphicon glyphicon-ok"></SPAN> Rejoindre les adhérents de ce forum</A><?php } ?>
+				<P>Voici les personnes qui ont adhéré à ce forum.</P>
+				<?php if ($CONNECTED) { ?>
+					<?php if (!$jeSuisAdherent) { ?>
+					<P>Voulez-vous en faire partie ? <A href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#ModalSouscrire" data-forum="<?php echo $_SESSION['ce_forum']['titre'] ?>"><SPAN class="glyphicon glyphicon-ok"></SPAN> Rejoindre les adhérents de ce forum</A></P>
+					<?php } else{ ?>
+					<P><strong><span class="glyphicon glyphicon-ok"></span> Vous en faites partie !</strong></P>
+					<?php } ?>
+				<?php } else { ?>
+				<P class="alert alert-warning">Vous devez <A href="/connexion/?back=/forum/index.php?tab=equipe">vous connecter ou vous inscrire</A> pour pouvoir adhérer à ce forum.</P>
+				<?php } ?>
 				</P>
 				<?php
 				foreach ($_SESSION['ce_forum']['adhesions'] as $email=>$adhesion) {

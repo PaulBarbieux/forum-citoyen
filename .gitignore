@@ -5,3 +5,5 @@
 /forums/*
 !/forums/index.php
 *.mno
+/includes/config-*.php
+*.htaccess

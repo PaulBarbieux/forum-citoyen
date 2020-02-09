@@ -27,7 +27,7 @@ if (sqlExecute ("
 		utf8_decode("Personne nouvellement inscrite, à confirmer : ".$values['email']." : ".$values['prenom']." ".$values['nom']),
 		"MIME-Version: 1.0
 		Content-Type: text/html; charset=UTF-8
-		From: ".EMAIL_SEND);
+		From: ".SEND_EMAIL);
 	// Envoi d'un message pour confirmer ce profil
 	require_once ROOT.'/includes/phpmailer/PHPMailerAutoload.php';
 	$mail = new PHPMailer;
